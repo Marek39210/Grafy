@@ -70,14 +70,16 @@ def show_values(filename):
                 x.append(float(x1.replace(',','.')))
                 y.append(float(y1.replace(',','.')))
     print(x)
-    plt.plot(x,y, linestyle = lineVar.get(),marker = marker.get())
+    plt.plot(x,y, linestyle = lineVar.get(), marker = marker.get(), markerfacecolor = markbarva.get(), markeredgecolor = markbarva.get(), color = barva.get())
     plt.title(titleEntry.value)
     plt.xlabel(xlabelEntry.value)
     plt.ylabel(ylabelEntry.value)
     plt.show()
 
+
+
 window = tk.Tk()
-window.geometry("570x250")
+window.geometry("570x320")
 
 window.title("Grafy")
 
@@ -127,6 +129,15 @@ tk.OptionMenu(graf_frame,lineVar,'none','-','-.','--',':').grid(row=3,column=2, 
 tk.Label(graf_frame,text='Marker').grid(row = 4, column = 0)
 marker = tk.StringVar(value='none')
 tk.OptionMenu(graf_frame,marker,*tuple('.,o+PxX*1234<>v')).grid(row=4,column=2, sticky='w')
+
+tk.Label(graf_frame,text='ČÁRA').grid(row = 5, column = 0)
+barva = tk.StringVar(value='black')
+tk.OptionMenu(graf_frame,barva,'green','blue','red','orange','black').grid(row=5,column=2, sticky='w')
+
+tk.Label(graf_frame,text='MARKER').grid(row = 6, column = 0)
+markbarva = tk.StringVar(value='black')
+tk.OptionMenu(graf_frame,markbarva,'green','blue','red','orange','black').grid(row=6,column=2, sticky='w')
+
 
 
 chosen_file_label = tk.Label(window, text="")
